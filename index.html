@@ -76,15 +76,9 @@ body.invert #nav a:hover {
 #nav.text-offer .nav-text-offer { display:inline; }
 </style>
 <script src="https://unpkg.com/lzma@2.3.2/src/lzma-min.js"></script>
+<script src="https://unpkg.com/lzma@2.3.2/src/lzma_worker-min.js"></script>
 <script>
 var matches;
-var lzma_path = "https://unpkg.com/lzma@2.3.2/src/lzma_worker-min.js";
-
-if (lzma_path && lzma_path.indexOf("//") >= 0) {
-    lzma_path = URL.createObjectURL(new Blob(["importScripts(" + JSON.stringify(lzma_path) + ")"]));
-}
-
-var lzma = new LZMA(lzma_path);
 
 document.addEventListener('DOMContentLoaded', function(){
   document.getElementById("plaintext").focus();
@@ -107,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var reader = new FileReader();
     reader.onload = function(){
       var compressed_data = Array.from(new Uint8Array(reader.result));
-      lzma.decompress(compressed_data, function(plaintext, error){
+      LZMA.decompress(compressed_data, function(plaintext, error){
         if (error) {
           alert("Failed to decompress data: "+error);
           return;
@@ -122,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function url_generate(format) {
   var plaintext = document.getElementById("plaintext").value;
-  lzma.compress(plaintext, 1, function(compressed, error){
+  LZMA.compress(plaintext, 1, function(compressed, error){
     if (error) {
       alert("Failed to compress data: "+error);
       return;
