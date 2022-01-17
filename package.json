@@ -1,0 +1,19 @@
+{
+  "name": "paste",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:LordRonz/paste.git",
+  "author": "LordRonz <aarontanhar2000@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "format": "prettier -w .",
+    "format:check": "prettier -c ."
+  },
+  "dependencies": {
+    "html-minifier": "^4.0.0"
+  }
+}
