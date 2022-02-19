@@ -1,9 +1,10 @@
-const { minify } = require('html-minifier');
-const fs = require('fs');
+import { minify } from 'html-minifier';
+import type { Options } from 'html-minifier';
+import fs from 'fs';
 
 const buildDir = './build';
 
-const minifyOptions = {
+const minifyOptions: Options = {
   collapseBooleanAttributes: true,
   collapseInlineTagWhitespace: true,
   collapseWhitespace: true,
