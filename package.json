@@ -15,7 +15,8 @@
     "build": "ts-node build.ts",
     "tsc": "tsc",
     "format": "prettier -w .",
-    "format:check": "prettier -c ."
+    "format:check": "prettier -c .",
+    "deduplicate": "npx yarn-deduplicate && yarn install"
   },
   "dependencies": {
     "html-minifier": "^4.0.0"
